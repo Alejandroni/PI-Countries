@@ -4,40 +4,42 @@ const { defaultValueSchemable } = require('sequelize/types/utils');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('country', {
-/*    ID (Código de 3 letras) *
-Nombre *
-Imagen de la bandera *
-Continente *
-Capital **/
+  sequelize.define('activity', {
+/*
+ID
+Nombre
+Dificultad (Entre 1 y 5)
+Duración
+Temporada (Verano, Otoño, Invierno o Primavera)
+*/
+/*
 id:{
-  type: DataTypes.CHAR(3),  //unico que no se va a repetir
+  type: DataTypes.CHAR, 
 
 allowNull: false,
 primaryKey: true,
-},
+},*/
 nombre: {
   type: DataTypes.STRING,
   allowNull: false,
 },
-capital: {
+dificultad: {
+  type: DataTypes.ENUM({
+      valores: ["1","2","3","4","5"]
+  }),
+  allowNull: false,
+},
+duracion: {
   type: DataTypes.STRING,
   allowNull: false,
 },
-continente: {
-  type: DataTypes.STRING,
-  allowNull: false,
-},
-imagenBandera: {
-type: DataTypes.STRING,
-allowNull: false,
+temporada: {
+type: DataTypes.ENUM({
+    valores: ["Verano","Otoño","Invierno","Primavera"]
+})
+
 },
 
-/*
 
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },*/
   });
 };
